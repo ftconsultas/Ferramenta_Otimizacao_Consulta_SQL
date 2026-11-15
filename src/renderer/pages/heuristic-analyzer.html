@@ -1,0 +1,49 @@
+<section id="heuristic-analyzer" class="view active">
+    <div class="card sticky-input-card">
+        <div class="query-tabs" role="tablist" aria-label="Consultas">
+            <button id="original-query-tab" class="query-tab active" type="button" role="tab"
+                aria-selected="true" aria-controls="original-query-panel" data-query-tab="original">Consulta original</button>
+            <button id="optimized-query-tab" class="query-tab" type="button" role="tab"
+                aria-selected="false" aria-controls="optimized-query-panel" data-query-tab="optimized" disabled>Consulta otimizada</button>
+        </div>
+
+        <div id="original-query-panel" class="query-panel active" role="tabpanel" aria-labelledby="original-query-tab"
+            data-query-panel="original">
+            <div class="editor-container has-syntax">
+                <button class="btn-icon copy-query-btn" type="button" title="Copiar consulta"
+                    aria-label="Copiar consulta">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <div id="sql-backdrop" class="backdrop"></div>
+                <textarea id="sql-input" class="transparent-input" placeholder="Cole sua consulta SQL aqui..."></textarea>
+            </div>
+        </div>
+
+        <div id="optimized-query-panel" class="query-panel" role="tabpanel" aria-labelledby="optimized-query-tab"
+            data-query-panel="optimized" hidden>
+            <div class="editor-container has-syntax">
+                <button class="btn-icon copy-query-btn" type="button" title="Copiar consulta"
+                    aria-label="Copiar consulta">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <div id="optimized-sql-backdrop" class="backdrop"></div>
+                <textarea id="optimized-sql-input" class="transparent-input"
+                    placeholder="A consulta otimizada aparecerá aqui após aplicar uma sugestão."></textarea>
+            </div>
+        </div>
+        <div class="actions">
+            <button id="clear-heuristic-btn" class="btn-secondary" type="button">Limpar Consulta</button>
+            <button id="format-sql-btn" class="btn-secondary" type="button">Formatar SQL</button>
+            <button id="analyze-btn" class="btn-primary">Analisar Consulta</button>
+        </div>
+    </div>
+    <div id="results" class="results-area"></div>
+</section>

@@ -1,0 +1,72 @@
+<section id="execution-plan" class="view">
+    <div id="no-connection-plan" class="card empty-state">
+        <div class="empty-icon"></div>
+        <h3>Análise de Plano Real (Modo Detalhado)</h3>
+        <p>Para obter o plano de execução, é necessário conectar-se a um banco de dados.</p>
+        <div class="sgbd-selector">
+            <div class="sgbd-option active" data-sgbd="mysql">
+                <span class="sgbd-name">MySQL</span>
+            </div>
+        </div>
+        <button class="btn-primary" id="go-to-settings-btn">Configurar Conexão</button>
+    </div>
+
+    <div id="active-plan-view" class="active-connection-view" style="display: none;">
+        <div class="card sticky-input-card" id="plan-input-card">
+            <div class="editor-container has-syntax">
+                <div id="plan-backdrop" class="backdrop"></div>
+                <textarea id="sql-input-plan" class="transparent-input"
+                    placeholder="Cole sua consulta SQL aqui para análise detalhada..."></textarea>
+            </div>
+            <div class="actions">
+                <button id="toggle-sql-btn" class="btn-icon" title="Ocultar SQL"
+                    style="display: flex; align-items: center; gap: 6px;">
+                    <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
+                    <span class="toggle-sql-text">Modificar Consulta</span>
+                </button>
+                <span style="flex-grow: 1;"></span>
+                <button id="clear-comparison-btn" class="btn-secondary" type="button">Limpar Consulta</button>
+                <button id="debug-plan-btn" class="btn-secondary" style="display:none;"
+                    title="Ver saída bruta do MySQL">Ver Log Bruto</button>
+                <button id="format-sql-plan-btn" class="btn-secondary" type="button">Formatar SQL</button>
+                <button id="analyze-plan-btn" class="btn-primary">Analisar Plano Real</button>
+            </div>
+        </div>
+        <div id="plan-results" class="results-area"></div>
+
+        <!-- Guia Teórico Didático (Baseado no Checklist MySQL 8.0+) -->
+        <div class="card"
+            style="margin-top: var(--spacing-xl); border-color: rgba(56, 189, 248, 0.2); background: rgba(15, 23, 42, 0.4);">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-md);">
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;"> Custo por Iteração (Loops)</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                        O <code>actual time</code> do MySQL é uma média por loop. Nossa ferramenta já multiplica o tempo
+                        final pelo número de loops para te dar o <strong>Tempo Total Real</strong> daquela etapa.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;"> Decomposição de Tempo (Delta)</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                        Isolamos o custo de cada etapa subtraindo o tempo dos "filhos" do tempo do "pai". O valor
+                        <strong>Delta</strong> é o que aquela operação específica (como um Filtro ou Join) custou de
+                        verdade.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">Latência de Inicialização</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                        A barra de progresso mostra a diferença entre a <strong>Primeira Linha (Barra Amarela)</strong>
+                        e o
+                        <strong>Total (Barra Azul)</strong>. Se a barra amarela for muito grande, o banco está "travado"
+                        preparando dados antes de começar a entregar os resultados para aquela operação.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

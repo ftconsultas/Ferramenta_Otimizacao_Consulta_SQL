@@ -1,0 +1,49 @@
+<section id="settings" class="view">
+    <div class="card">
+        <h3>Configurações de Conexão</h3>
+        <p class="text-secondary">Selecione o seu SGBD e preencha as credenciais.</p>
+
+        <div class="sgbd-selector-small">
+            <button class="sgbd-btn active" data-sgbd="mysql">MySQL</button>
+        </div>
+
+        <form id="db-config-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Host (Apenas Local)</label>
+                    <input type="text" id="db-host" value="localhost" readonly
+                        style="background: rgba(255,255,255,0.05); color: var(--text-muted);">
+                    <small style="display: block; margin-top: 4px; color: var(--color-danger); font-size: 0.75rem;">
+                        Conexões externas bloqueadas.</small>
+                </div>
+                <div class="form-group">
+                    <label>Porta</label>
+                    <input type="number" id="db-port" value="3306">
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input type="text" id="db-user" value="root">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="db-pass" placeholder="••••••••">
+                    <label id="saved-password-option" hidden>
+                        <input type="checkbox" id="use-saved-password"> Usar senha salva
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Banco de Dados (Schema)</label>
+                <input type="text" id="db-name" placeholder="ex: minha_loja">
+            </div>
+            <div class="form-actions">
+                <button type="button" id="test-connection-btn" class="btn-secondary">Testar Conexão</button>
+                <button type="button" id="save-config-btn" class="btn-secondary">Salvar Configurações</button>
+                <button type="submit" id="connect-db-btn" class="btn-primary">Conectar ao Banco</button>
+            </div>
+            <div id="connection-feedback" style="margin-top: var(--spacing-lg); display: none;"></div>
+        </form>
+    </div>
+</section>

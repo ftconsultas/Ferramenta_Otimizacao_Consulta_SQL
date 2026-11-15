@@ -1,0 +1,31 @@
+{
+  "name": "sql-optimizer-electron",
+  "productName": "Ferramenta educacional para otimizacao de consultas SQL",
+  "version": "1.0.0",
+  "description": "Ferramenta educacional para otimização de consultas SQL",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "dev": "electron . --no-sandbox --inspect",
+    "test": "jest --coverage",
+    "lint": "eslint src/**/*.js"
+  },
+  "author": "PhilipeSousa <philipe@tcc.local>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^41.7.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-security": "^4.0.0",
+    "eslint-plugin-sonarjs": "^4.0.2",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0"
+  },
+  "dependencies": {
+    "@codemirror/lang-sql": "^6.10.0",
+    "@codemirror/theme-one-dark": "^6.1.3",
+    "codemirror": "^6.0.2",
+    "mysql2": "^3.11.0",
+    "node-sql-parser": "^5.4.0",
+    "sql-formatter": "^15.8.0"
+  }
+}
